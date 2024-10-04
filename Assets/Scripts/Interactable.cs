@@ -15,4 +15,4 @@ public abstract class  Interactable : MonoBehaviour
     { 
         
     }
-}
+ }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Computer : Interactable
 {
-    public GameObject uiPanel;
+    [SerializeField] private GameObject computerUI;
     private bool isPlayerNearby = false;
 
     // Start is called before the first frame update
@@ -24,12 +24,12 @@ public class Computer : Interactable
         {
             isPlayerNearby = false;
             Debug.Log("Player left the interaction zone.");
-            uiPanel.SetActive(isPlayerNearby);
+            computerUI.SetActive(isPlayerNearby);
         }
     }
     protected override void Interact()
     {
-        uiPanel.SetActive(!uiPanel.activeSelf);
+        computerUI.SetActive(!computerUI.activeSelf);
         Debug.Log("Interacted With " + gameObject.name);
     }
 }

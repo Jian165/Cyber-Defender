@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private TextMeshProUGUI playerPromt;
     [SerializeField] private float intracDistance = 5f;
-    [SerializeField] private GameObject[] playerUI;
+    [SerializeField] private GameObject playerUI;
 
     private Interactable selectedComputer;
 
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
     {
         if (selectedComputer != null)
         {
-            selectedComputer.Interact(this );
+            selectedComputer.Interact(this);
         }
     }
 
@@ -144,11 +144,11 @@ public class Player : MonoBehaviour
             if (camRaycastHit.transform.TryGetComponent(out Interactable interactable))
             {
                 TextPromptUpdate(interactable.promtMessage); // get the promt message of the computer and display it to the player UI
-                // check if the raycast select the same Interactable object if not set the object as the selected computer 
+
+                // check if the raycast select the same Interactable object if not set the object as the new selected computer 
                 if (interactable != selectedComputer)
                 {
                     SetSelectedInteractable(interactable);
-                    Debug.Log(interactable is Computer);
                 }
             }
 
@@ -177,7 +177,7 @@ public class Player : MonoBehaviour
         this.selectedComputer = selectedComputer;
         OnSelectedComputerChange?.Invoke(this, new OnSelectedComputerChangeEventArgs
         { 
-            // set the valuue to the event variable
+            // set the value to the event variable
             selectedComputer = selectedComputer
         });
     }
@@ -190,10 +190,7 @@ public class Player : MonoBehaviour
         canMove = !isInComputer;
 
         // Player UI
-        foreach (GameObject ui in playerUI)
-        {
-            ui.SetActive(!isInComputer);
-        }
+        playerUI.SetActive(!isInComputer);
     }
     
 }

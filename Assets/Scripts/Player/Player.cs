@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private TextMeshProUGUI playerPromt;
     [SerializeField] private float intracDistance = 5f;
+    [SerializeField] private GameObject[] playerUI;
 
     private Interactable selectedComputer;
 
@@ -48,8 +49,6 @@ public class Player : MonoBehaviour
     {
         public Interactable selectedComputer;
     }
-
-
 
 
     private void Awake()
@@ -67,7 +66,7 @@ public class Player : MonoBehaviour
     {
         if (selectedComputer != null)
         {
-            selectedComputer.BaseInteract();
+            selectedComputer.Interact(this );
         }
     }
 
@@ -182,4 +181,19 @@ public class Player : MonoBehaviour
             selectedComputer = selectedComputer
         });
     }
+
+    public void isPlayerInComputer (bool isInComputer)
+    {
+        // eable and disable
+
+        // movement 
+        canMove = !isInComputer;
+
+        // Player UI
+        foreach (GameObject ui in playerUI)
+        {
+            ui.SetActive(!isInComputer);
+        }
+    }
+    
 }

@@ -5,31 +5,15 @@ using UnityEngine;
 public class Computer : Interactable
 {
     [SerializeField] private GameObject computerUI;
-    private bool isPlayerNearby = false;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    public override void Interact(Player player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerNearby = false;
-            Debug.Log("Player left the interaction zone.");
-            computerUI.SetActive(isPlayerNearby);
-        }
-    }
-    protected override void Interact()
-    {
+        // activate computer ui
         computerUI.SetActive(!computerUI.activeSelf);
+
         Debug.Log("Interacted With " + gameObject.name);
+
+        // remove the player ui if the player is in computer ui
+        player.isPlayerInComputer(computerUI.activeSelf);
     }
 }

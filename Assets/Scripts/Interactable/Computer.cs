@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Computer : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject computerUI;
+    
+    public override void Interact(Player player)
     {
-        
-    }
+        // activate computer ui
+        computerUI.SetActive(!computerUI.activeSelf);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    protected override void Interact()
-    {
         Debug.Log("Interacted With " + gameObject.name);
+
+        // remove the player ui if the player is in computer ui
+        player.isPlayerInComputer(computerUI.activeSelf);
     }
 }

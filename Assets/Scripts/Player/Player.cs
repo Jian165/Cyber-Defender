@@ -97,6 +97,8 @@ public class Player : MonoBehaviour
             Vector2 inputMoveDirection = gameInput.GetMovementNormalized();
             Vector3 moveDir = new Vector3(inputMoveDirection.x, 0f, inputMoveDirection.y);
 
+            isWalking = moveDir != Vector3.zero;
+
             // performs the movement
             controller.Move(transform.TransformDirection(moveDir) * moveSpeed * Time.deltaTime); // move x and move z
             playerGravityVelocity.y += gravity * Time.deltaTime; // move y
@@ -191,6 +193,11 @@ public class Player : MonoBehaviour
 
         // Player UI
         playerUI.SetActive(!isInComputer);
+    }
+
+    public bool IsWalking()
+    {
+        return isWalking;
     }
     
 }

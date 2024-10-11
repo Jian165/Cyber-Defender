@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator animator;
-    private const string IS_WALKING = "IsWalking";
+    private const string IS_Forward = "IsForward";
+    private const string IS_Backward = "IsBackward";
     [SerializeField] private Player player;
     private void Awake()
     {
@@ -14,7 +15,28 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-       animator.SetBool(IS_WALKING, player.IsWalking());
+        MovementAnimation();
+    }
+
+    private void MovementAnimation()
+    {
+        if (player.WalikngDirection().y > 0 && player.WalikngDirection().x == 0)
+        {
+            animator.SetBool(IS_Forward, true);
+        }
+        else if (player.WalikngDirection().y < 0 && player.WalikngDirection().x == 0)
+        { 
+        
+            animator.SetBool(IS_Backward, true);
+        }
+        else
+        {
+            animator.SetBool(IS_Backward,false);
+            animator.SetBool(IS_Forward, false);
+        }
+
+
+        
     }
 }
 

@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private bool isGrounded;
     private Vector3 playerGravityVelocity;
     private bool isWalking;
-
+    Vector2 inputMoveDirection ;
     private bool canMove = true;
     private float groundedGravPull = -2.0f;
     private float scalingFactor = -3f;
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         if (canMove)
         {
             // Playermovement x and y direction
-            Vector2 inputMoveDirection = gameInput.GetMovementNormalized();
+            inputMoveDirection = gameInput.GetMovementNormalized();
             Vector3 moveDir = new Vector3(inputMoveDirection.x, 0f, inputMoveDirection.y);
 
             isWalking = moveDir != Vector3.zero;
@@ -198,6 +198,11 @@ public class Player : MonoBehaviour
     public bool IsWalking()
     {
         return isWalking;
+    }
+
+    public Vector2 WalikngDirection()
+    {
+        return inputMoveDirection; 
     }
     
 }

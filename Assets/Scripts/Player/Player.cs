@@ -9,7 +9,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // fields for movement
-    [SerializeField] private float moveSpeed = 7f;
+    [Header("Character Movement")]
+    [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private float jumpHeight = 1.5f;
     [SerializeField] private float gravity = -19.6f;
@@ -18,12 +19,13 @@ public class Player : MonoBehaviour
     private bool isGrounded;
     private Vector3 playerGravityVelocity;
     private bool isWalking;
-
+    Vector2 inputMoveDirection ;
     private bool canMove = true;
     private float groundedGravPull = -2.0f;
     private float scalingFactor = -3f;
 
     // fields for camera movement
+    [Header("Camera and Mouse Movement")]
     [SerializeField] Camera cam;
     [SerializeField] Transform HeadObject;
 
@@ -36,10 +38,11 @@ public class Player : MonoBehaviour
 
 
     // interaction field
+    [Header("Interaction")]
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private TextMeshProUGUI playerPromt;
     [SerializeField] private float intracDistance = 5f;
-    [SerializeField] private GameObject[] playerUI;
+    [SerializeField] private GameObject playerUI;
 
     private Interactable selectedComputer;
 
@@ -66,7 +69,7 @@ public class Player : MonoBehaviour
     {
         if (selectedComputer != null)
         {
-            selectedComputer.Interact(this );
+            selectedComputer.Interact(this);
         }
     }
 
@@ -94,8 +97,10 @@ public class Player : MonoBehaviour
         if (canMove)
         {
             // Playermovement x and y direction
-            Vector2 inputMoveDirection = gameInput.GetMovementNormalized();
+            inputMoveDirection = gameInput.GetMovementNormalized();
             Vector3 moveDir = new Vector3(inputMoveDirection.x, 0f, inputMoveDirection.y);
+
+            isWalking = moveDir != Vector3.zero;
 
             // performs the movement
             controller.Move(transform.TransformDirection(moveDir) * moveSpeed * Time.deltaTime); // move x and move z
@@ -144,11 +149,11 @@ public class Player : MonoBehaviour
             if (camRaycastHit.transform.TryGetComponent(out Interactable interactable))
             {
                 TextPromptUpdate(interactable.promtMessage); // get the promt message of the computer and display it to the player UI
-                // check if the raycast select the same Interactable object if not set the object as the selected computer 
+
+                // check if the raycast select the same Interactable object if not set the object as the new selected computer 
                 if (interactable != selectedComputer)
                 {
                     SetSelectedInteractable(interactable);
-                    Debug.Log(interactable is Computer);
                 }
             }
 
@@ -177,7 +182,7 @@ public class Player : MonoBehaviour
         this.selectedComputer = selectedComputer;
         OnSelectedComputerChange?.Invoke(this, new OnSelectedComputerChangeEventArgs
         { 
-            // set the valuue to the event variable
+            // set the value to the event variable
             selectedComputer = selectedComputer
         });
     }
@@ -190,10 +195,17 @@ public class Player : MonoBehaviour
         canMove = !isInComputer;
 
         // Player UI
-        foreach (GameObject ui in playerUI)
-        {
-            ui.SetActive(!isInComputer);
-        }
+        playerUI.SetActive(!isInComputer);
+    }
+
+    public bool IsWalking()
+    {
+        return isWalking;
+    }
+
+    public Vector2 WalikngDirection()
+    {
+        return inputMoveDirection; 
     }
     
 }

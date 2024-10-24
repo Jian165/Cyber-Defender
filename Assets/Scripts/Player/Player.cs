@@ -9,7 +9,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // fields for movement
-    [SerializeField] private float moveSpeed = 7f;
+    [Header("Character Movement")]
+    [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private float jumpHeight = 1.5f;
     [SerializeField] private float gravity = -19.6f;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     private float scalingFactor = -3f;
 
     // fields for camera movement
+    [Header("Camera and Mouse Movement")]
     [SerializeField] Camera cam;
     [SerializeField] Transform HeadObject;
 
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
 
 
     // interaction field
+    [Header("Interaction")]
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private TextMeshProUGUI playerPromt;
     [SerializeField] private float intracDistance = 5f;

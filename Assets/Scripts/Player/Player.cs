@@ -54,16 +54,6 @@ public class Player : MonoBehaviour
     }
 
 
-    private void Awake()
-    {
-        controller = GetComponent<CharacterController>();
-    }
-
-    void Start()
-    {
-        gameInput.OnPayerJump += GameInput_OnPlayerJump;
-        gameInput.OnInteractComputer += GameInput_OnPlayeInteractComputer;
-    }
 
     private void GameInput_OnPlayeInteractComputer(object sender, EventArgs e)
     {
@@ -81,6 +71,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+    }
+
+    void Start()
+    {
+        // lock the cursor
+        Cursor.lockState = CursorLockMode.Locked;
+
+        gameInput.OnPayerJump += GameInput_OnPlayerJump;
+        gameInput.OnInteractComputer += GameInput_OnPlayeInteractComputer;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -196,6 +199,17 @@ public class Player : MonoBehaviour
 
         // Player UI
         playerUI.SetActive(!isInComputer);
+
+        if (!isInComputer)
+        {
+        // if the player is not in the computer lock the cursour
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        { 
+        // if the player is in the computer unlock the cursour
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     public bool IsWalking()

@@ -42,8 +42,14 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float maxMoonLightIntensity;
 
+    [SerializeField]
+    private float maxDayLightIntensity;
+
+    [SerializeField]
+    private float maxNightLightIntensity;
 
     private DateTime currentTime;
+    private TimeSpan noon = new TimeSpan(12, 0, 0);
 
     private TimeSpan sunriseTime;
     private TimeSpan sunsetTime;
@@ -68,9 +74,10 @@ public class TimeController : MonoBehaviour
 
     private void UpdateTimeOfDay()
     {
-        // update the current time
+        // update the current time add a seconds in every update times the speed of how much time passes
         currentTime = currentTime.AddSeconds(Time.deltaTime * timeMultiplier);
-
+        
+        // if time UI exsist put the current time value in it
         if (timeText != null)
         { 
             timeText.text =  currentTime.ToString("HH:mm");
@@ -80,22 +87,54 @@ public class TimeController : MonoBehaviour
     private void RotateSun()
     {
         float sunLightRotation;
-        // check if the current time is sunrise or sun set
+        // check if the the sun is still up
         if (currentTime.TimeOfDay > sunriseTime && currentTime.TimeOfDay < sunsetTime)
         {
+            // calculate the total time span between sunrise to sun set
             TimeSpan sunriseToSunsetDuration = CalculateTimeDifference(sunriseTime, sunsetTime);
+            
+            // calculate how much day time left after sunrise
             TimeSpan timeSinceSunrise = CalculateTimeDifference(sunriseTime, currentTime.TimeOfDay);
+            
+            // get the percentage of day time before sunset
+            double percentageDayToNight = timeSinceSunrise.TotalMinutes / sunriseToSunsetDuration.TotalMinutes;
+            
+            // check time if it is morning
+            if (currentTime.TimeOfDay <= noon)
+            {
+                // calculate morning light intensity
+                float percentageMoringToNoon = (((float)percentageDayToNight*100 ) / 50f) * 100f;
+                float lightIntensity = (percentageMoringToNoon / 100) * maxDayLightIntensity ;
+                
+                // if morning light is higher than night light set light intensity
+                RenderSettings.ambientIntensity  = lightIntensity > maxNightLightIntensity ? lightIntensity : maxNightLightIntensity ;
 
-            double percentage = timeSinceSunrise.TotalMinutes / sunriseToSunsetDuration.TotalMinutes;
+            }
+            else
+            { 
+                // calculate noon intensity
+                float percentageNoonToNight = ((((float)percentageDayToNight*100) - 50f) / 50f) * 100f;
+                float lightIntensity =  maxDayLightIntensity * (1 - (percentageNoonToNight / 100f));
 
-            sunLightRotation = Mathf.Lerp(0, 180, (float)percentage);
+                // if noonlight is lower that higher that night intensity set noon light 
+                RenderSettings.ambientIntensity  = lightIntensity > maxNightLightIntensity ? lightIntensity : maxNightLightIntensity ;
+                
+            }
+
+            sunLightRotation = Mathf.Lerp(0, 180, (float)percentageDayToNight);
         }
         else
         {
+            // calculate the total time span between sunset to sun rise
             TimeSpan sunsetToSunriseDuration = CalculateTimeDifference(sunsetTime, sunriseTime);
+
+            // calculate houw the how much time 
             TimeSpan timeSinceSunset = CalculateTimeDifference(sunsetTime, currentTime.TimeOfDay);
 
             double percentage =  timeSinceSunset.TotalMinutes /  sunsetToSunriseDuration.TotalMinutes;
+            
+            RenderSettings.ambientIntensity = maxNightLightIntensity;
+
 
             sunLightRotation = Mathf.Lerp(180, 360, (float)percentage);
         }
@@ -111,7 +150,7 @@ public class TimeController : MonoBehaviour
         RenderSettings.ambientLight = Color.Lerp(nightAmbientLight, dayAmbientLight, lightChangeCurve.Evaluate(dotProduct));
     }
 
-    private TimeSpan CalculateTimeDifference (TimeSpan fromTime, TimeSpan toTime)
+    private TimeSpan CalculateTimeDifference(TimeSpan fromTime, TimeSpan toTime)
     {
         TimeSpan difference = toTime - fromTime;
 
@@ -121,5 +160,10 @@ public class TimeController : MonoBehaviour
         }
 
         return difference;
+    }
+
+    private void AmbientLightIntensity()
+    { 
+        
     }
 }

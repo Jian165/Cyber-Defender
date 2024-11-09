@@ -15,8 +15,6 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI timeText;
 
-    [SerializeField]
-    private Light sunLight;
 
     [SerializeField]
     private float sunriseHour;
@@ -30,8 +28,14 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private Color nightAmbientLight;
 
+    private float maxDayAmbientLightIntensity;
+    private float maxNightAmbientLightIntensity;
+
     [SerializeField]
     private AnimationCurve lightChangeCurve;
+
+    [SerializeField]
+    private Light sunLight;
 
     [SerializeField]
     private float maxSunLightIntensity;
@@ -42,11 +46,9 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float maxMoonLightIntensity;
 
-    [SerializeField]
-    private float maxDayLightIntensity;
+  
 
-    [SerializeField]
-    private float maxNightLightIntensity;
+    public EventHandler <OnDayChangeEventArgs> OnDayChange;
 
     private DateTime currentTime;
     private TimeSpan noon = new TimeSpan(12, 0, 0);
@@ -62,6 +64,8 @@ public class TimeController : MonoBehaviour
         sunriseTime =  TimeSpan.FromHours(sunriseHour);
         sunsetTime =  TimeSpan.FromHours(sunsetHour);
 
+        maxDayAmbientLightIntensity = maxSunLightIntensity;
+        maxNightAmbientLightIntensity = maxMoonLightIntensity;
     }
 
     // Update is called once per frame
@@ -104,22 +108,28 @@ public class TimeController : MonoBehaviour
             {
                 // calculate morning light intensity
                 float percentageMoringToNoon = (((float)percentageDayToNight*100 ) / 50f) * 100f;
-                float lightIntensity = (percentageMoringToNoon / 100) * maxDayLightIntensity ;
+                float lightIntensity = (percentageMoringToNoon / 100) * maxDayAmbientLightIntensity ;
                 
                 // if morning light is higher than night light set light intensity
-                RenderSettings.ambientIntensity  = lightIntensity > maxNightLightIntensity ? lightIntensity : maxNightLightIntensity ;
+                RenderSettings.ambientIntensity  = lightIntensity > maxNightAmbientLightIntensity ? lightIntensity : maxNightAmbientLightIntensity ;
 
             }
             else
             { 
                 // calculate noon intensity
                 float percentageNoonToNight = ((((float)percentageDayToNight*100) - 50f) / 50f) * 100f;
-                float lightIntensity =  maxDayLightIntensity * (1 - (percentageNoonToNight / 100f));
+                float lightIntensity =  maxDayAmbientLightIntensity * (1 - (percentageNoonToNight / 100f));
 
                 // if noonlight is lower that higher that night intensity set noon light 
-                RenderSettings.ambientIntensity  = lightIntensity > maxNightLightIntensity ? lightIntensity : maxNightLightIntensity ;
+                RenderSettings.ambientIntensity  = lightIntensity > maxNightAmbientLightIntensity ? lightIntensity : maxNightAmbientLightIntensity ;
                 
             }
+            
+            
+            OnDayChange?.Invoke(this, new OnDayChangeEventArgs
+            {
+                isNightTime = false
+            });
 
             sunLightRotation = Mathf.Lerp(0, 180, (float)percentageDayToNight);
         }
@@ -133,7 +143,12 @@ public class TimeController : MonoBehaviour
 
             double percentage =  timeSinceSunset.TotalMinutes /  sunsetToSunriseDuration.TotalMinutes;
             
-            RenderSettings.ambientIntensity = maxNightLightIntensity;
+            RenderSettings.ambientIntensity = maxNightAmbientLightIntensity;
+
+            OnDayChange?.Invoke(this, new OnDayChangeEventArgs
+            {
+                isNightTime = true
+            });
 
 
             sunLightRotation = Mathf.Lerp(180, 360, (float)percentage);
@@ -162,8 +177,9 @@ public class TimeController : MonoBehaviour
         return difference;
     }
 
-    private void AmbientLightIntensity()
-    { 
-        
+
+    public class OnDayChangeEventArgs : EventArgs
+    {
+        public bool isNightTime;
     }
 }

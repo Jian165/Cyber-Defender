@@ -6172,7 +6172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401786537699383172, guid: 7ce03d3f36f51cb408c0d8dded3e50c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.6
+      value: 4.69
       objectReference: {fileID: 0}
     - target: {fileID: 2401786537699383172, guid: 7ce03d3f36f51cb408c0d8dded3e50c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7445,7 +7445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401786537699383172, guid: 7ce03d3f36f51cb408c0d8dded3e50c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.6
+      value: 4.67
       objectReference: {fileID: 0}
     - target: {fileID: 2401786537699383172, guid: 7ce03d3f36f51cb408c0d8dded3e50c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15657,6 +15657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2281794603401089198, guid: 2b27653cb5c641d4d9d47f6fc498030b, type: 3}
+      propertyPath: timeController
+      value: 
+      objectReference: {fileID: 1463452557}
     - target: {fileID: 2281794603401089198, guid: 2b27653cb5c641d4d9d47f6fc498030b, type: 3}
       propertyPath: computers.Array.size
       value: 6

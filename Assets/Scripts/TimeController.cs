@@ -48,7 +48,8 @@ public class TimeController : MonoBehaviour
 
   
 
-    public EventHandler <OnDayChangeEventArgs> OnDayChange;
+    public EventHandler <OnNightTimeEventArgs> OnNightTime;
+
 
     private DateTime currentTime;
     private TimeSpan noon = new TimeSpan(12, 0, 0);
@@ -124,9 +125,9 @@ public class TimeController : MonoBehaviour
                 RenderSettings.ambientIntensity  = lightIntensity > maxNightAmbientLightIntensity ? lightIntensity : maxNightAmbientLightIntensity ;
                 
             }
+
             
-            
-            OnDayChange?.Invoke(this, new OnDayChangeEventArgs
+            OnNightTime?.Invoke(this, new OnNightTimeEventArgs
             {
                 isNightTime = false
             });
@@ -145,7 +146,7 @@ public class TimeController : MonoBehaviour
             
             RenderSettings.ambientIntensity = maxNightAmbientLightIntensity;
 
-            OnDayChange?.Invoke(this, new OnDayChangeEventArgs
+            OnNightTime?.Invoke(this, new OnNightTimeEventArgs
             {
                 isNightTime = true
             });
@@ -178,7 +179,7 @@ public class TimeController : MonoBehaviour
     }
 
 
-    public class OnDayChangeEventArgs : EventArgs
+    public class OnNightTimeEventArgs : EventArgs
     {
         public bool isNightTime;
     }

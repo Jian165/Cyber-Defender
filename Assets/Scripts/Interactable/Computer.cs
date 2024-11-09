@@ -12,16 +12,34 @@ public class Computer : Interactable
     [SerializeField] private Light screenLight;
     [SerializeField] private TimeController timeController;
 
+    private bool NightTimeCurrentState;
+
     bool screenLightStatus;
     public void Start()
     {
-        timeController.OnDayChange += OnTimeController_Change;
+        timeController.OnNightTime += OnNightTime_ComputerLigthsOn;
         screenLight.enabled = screenLightStatus;
     }
 
-    private void OnTimeController_Change(object sender, TimeController.OnDayChangeEventArgs e)
+    private void OnNightTime_ComputerLigthsOn(object sender, TimeController.OnNightTimeEventArgs e)
     {
-        screenLight.enabled = e.isNightTime;
+        if (e.isNightTime == true)
+        {
+            if (NightTimeCurrentState != e.isNightTime)
+            {
+                screenLight.enabled = e.isNightTime;
+                NightTimeCurrentState = e.isNightTime;
+            }
+        }
+        else
+        {
+            if (NightTimeCurrentState != e.isNightTime)
+            {
+                screenLight.enabled = e.isNightTime;
+                NightTimeCurrentState = e.isNightTime;
+            }
+
+        }
     }
 
     public override void Interact(Player player)
@@ -44,9 +62,23 @@ public class Computer : Interactable
         }
     }
 
-    public void hasError()
+    private Coroutine warningCoroutine;
+
+    public void EnableAttack()
     { 
         warningUI.SetActive(true);
-        StartCoroutine(WarningLoopImage());
+        warningCoroutine = StartCoroutine(WarningLoopImage());
+        screenLight.color = Color.red;
+    }
+
+    public void DisableAttack()
+    {
+        if (warningCoroutine != null)
+        {
+            warningUI.SetActive(false);
+            StopCoroutine(warningCoroutine);
+            screenLight.color = new Color(0.741f, 0.961f, 0.933f);
+        }
+
     }
 }

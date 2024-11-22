@@ -684,7 +684,7 @@ MonoBehaviour:
   warningUI: {fileID: 2690060295684377011}
   screenLight: {fileID: 4651840190309817211}
   computerTimer: {fileID: 4569363030241594532}
-  timeController: {fileID: 3450586059818241265, guid: 19755a2571df9f64fa87f5868b5c2928, type: 3}
+  timeController: {fileID: 4552258643685574606, guid: 9a29fe81aeeec0b438340fbbd9ab8d76, type: 3}
 --- !u!1 &1096065770599176154
 GameObject:
   m_ObjectHideFlags: 0
@@ -8338,7 +8338,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8025321853911639852}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0

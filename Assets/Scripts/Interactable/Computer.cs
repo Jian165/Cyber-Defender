@@ -19,12 +19,9 @@ public class Computer : Interactable
 
     private bool NightTimeCurrentState;
 
-    bool screenLightStatus;
     public void Start()
     {
         timeController.OnNightTime += OnNightTime_ComputerLigthsOn;
-        screenLight.enabled = screenLightStatus;
-        
     }
 
     private void OnNightTime_ComputerLigthsOn(object sender, TimeController.OnNightTimeEventArgs e)

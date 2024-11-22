@@ -9,6 +9,8 @@ public class GameInput : MonoBehaviour
 {
     public event EventHandler OnPayerJump;
     public event EventHandler OnInteractComputer;
+    public event EventHandler OnExitInteract;
+
     PlayerInput playerInput;
     void Awake()
     {
@@ -17,7 +19,13 @@ public class GameInput : MonoBehaviour
 
         playerInput.OnFoot.Jump.performed += OnPlayerJump_Perfrom;
         playerInput.OnFoot.Interact.performed += OnInteractComputer_Perform;
+        playerInput.OnFoot.InteractAlternative.performed += OnExitInteract_Perform;
         
+    }
+
+    private void OnExitInteract_Perform(InputAction.CallbackContext context)
+    {
+        OnExitInteract?.Invoke(this, EventArgs.Empty); 
     }
 
     private void OnInteractComputer_Perform(InputAction.CallbackContext context)

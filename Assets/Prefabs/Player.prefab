@@ -361,6 +361,8 @@ MonoBehaviour:
   playerPromt: {fileID: 1238422397262080624}
   intracDistance: 5
   playerUI: {fileID: 6516142738380999378}
+  playerTimer: {fileID: 1914178039818098129}
+  worldTimer: {fileID: 3450586059818241265, guid: 19755a2571df9f64fa87f5868b5c2928, type: 3}
 --- !u!1 &3395158478999429217
 GameObject:
   m_ObjectHideFlags: 0

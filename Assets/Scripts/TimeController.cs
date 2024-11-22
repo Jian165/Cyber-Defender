@@ -46,9 +46,19 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float maxMoonLightIntensity;
 
-  
+    public EventHandler <OnTimeChangeEventArgs> OnTimeChange;
+    public class OnTimeChangeEventArgs : EventArgs
+    {
+        public string currentTime;
+    }
+
 
     public EventHandler <OnNightTimeEventArgs> OnNightTime;
+    public class OnNightTimeEventArgs : EventArgs
+    {
+        public bool isNightTime;
+    }
+
 
 
     private DateTime currentTime;
@@ -81,12 +91,17 @@ public class TimeController : MonoBehaviour
     {
         // update the current time add a seconds in every update times the speed of how much time passes
         currentTime = currentTime.AddSeconds(Time.deltaTime * timeMultiplier);
-        
+
         // if time UI exsist put the current time value in it
         if (timeText != null)
-        { 
-            timeText.text =  currentTime.ToString("HH:mm");
+        {
+            OnTimeChange?.Invoke(this, new OnTimeChangeEventArgs
+            {
+                currentTime = currentTime.ToString("HH:mm")
+            });
+
         }
+               
     }
 
     private void RotateSun()
@@ -179,8 +194,4 @@ public class TimeController : MonoBehaviour
     }
 
 
-    public class OnNightTimeEventArgs : EventArgs
-    {
-        public bool isNightTime;
-    }
-}
+   }

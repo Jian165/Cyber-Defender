@@ -43,8 +43,31 @@ public class Player : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerPromt;
     [SerializeField] private float intracDistance = 5f;
     [SerializeField] private GameObject playerUI;
+    [SerializeField] private TextMeshProUGUI playerTimer;
 
-    private Interactable selectedComputer;
+    [SerializeField] private TimeController worldTimer;
+
+    private Interactable selectedObject;
+
+    void Start()
+    {
+        // lock the cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        worldTimer.OnTimeChange += WorldTimer_OnTimeChnage;
+        gameInput.OnPayerJump += GameInput_OnPlayerJump;
+        gameInput.OnInteractComputer += GameInput_OnPlayeInteractComputer;
+        gameInput.OnExitInteract += GameInput_OnExitInteract;
+    }
+
+    private void WorldTimer_OnTimeChnage(object sender, TimeController.OnTimeChangeEventArgs e)
+    {
+        playerTimer.text = e.currentTime;
+
+        if (selectedObject != null && selectedObject.GetComponentsInChildren<Computer>() != null)
+        {
+            selectedObject.GetCurrentTime(e.currentTime);
+        }
+    }
 
     public event EventHandler<OnSelectedComputerChangeEventArgs> OnSelectedComputerChange;
 
@@ -57,9 +80,9 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnPlayeInteractComputer(object sender, EventArgs e)
     {
-        if (selectedComputer != null)
+        if (selectedObject != null)
         {
-            selectedComputer.Interact(this);
+            selectedObject.Interact(this);
         }
     }
 
@@ -76,14 +99,15 @@ public class Player : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
-    void Start()
-    {
-        // lock the cursor
-        Cursor.lockState = CursorLockMode.Locked;
 
-        gameInput.OnPayerJump += GameInput_OnPlayerJump;
-        gameInput.OnInteractComputer += GameInput_OnPlayeInteractComputer;
+    private void GameInput_OnExitInteract(object sender, EventArgs e)
+    {
+        if (selectedObject != null)
+        { 
+            selectedObject.AlternativeInteract(this);
+        }
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -154,7 +178,7 @@ public class Player : MonoBehaviour
                 TextPromptUpdate(interactable.promtMessage); // get the promt message of the computer and display it to the player UI
 
                 // check if the raycast select the same Interactable object if not set the object as the new selected computer 
-                if (interactable != selectedComputer)
+                if (interactable != selectedObject)
                 {
                     SetSelectedInteractable(interactable);
                 }
@@ -182,7 +206,7 @@ public class Player : MonoBehaviour
     private void SetSelectedInteractable(Interactable selectedComputer)
     { 
         // set the value to the local seletedComputer varaible
-        this.selectedComputer = selectedComputer;
+        this.selectedObject = selectedComputer;
         OnSelectedComputerChange?.Invoke(this, new OnSelectedComputerChangeEventArgs
         { 
             // set the value to the event variable
@@ -198,18 +222,9 @@ public class Player : MonoBehaviour
         canMove = !isInComputer;
 
         // Player UI
+
         playerUI.SetActive(!isInComputer);
 
-        if (!isInComputer)
-        {
-        // if the player is not in the computer lock the cursour
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        { 
-        // if the player is in the computer unlock the cursour
-            Cursor.lockState = CursorLockMode.None;
-        }
     }
 
     public bool IsWalking()

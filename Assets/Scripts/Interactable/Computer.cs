@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Computer : Interactable
 {
@@ -10,7 +12,10 @@ public class Computer : Interactable
     [SerializeField] private GameObject warningImage;
     [SerializeField] private GameObject warningUI;
     [SerializeField] private Light screenLight;
+    [SerializeField] private TextMeshProUGUI computerTimer;
     [SerializeField] private TimeController timeController;
+
+
 
     private bool NightTimeCurrentState;
 
@@ -19,6 +24,7 @@ public class Computer : Interactable
     {
         timeController.OnNightTime += OnNightTime_ComputerLigthsOn;
         screenLight.enabled = screenLightStatus;
+        
     }
 
     private void OnNightTime_ComputerLigthsOn(object sender, TimeController.OnNightTimeEventArgs e)
@@ -38,19 +44,29 @@ public class Computer : Interactable
                 screenLight.enabled = e.isNightTime;
                 NightTimeCurrentState = e.isNightTime;
             }
-
         }
+    }
+
+    public override void GetCurrentTime(string currentime)
+    {
+        computerTimer.text = "Current Time: "+currentime;
+    }
+
+  
+    public override void AlternativeInteract(Player player)
+    {
+        computerUI.SetActive(false);
+        player.isPlayerInComputer(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public override void Interact(Player player)
     {
-        // activate computer ui
-        computerUI.SetActive(!computerUI.activeSelf);
-
-        Debug.Log("Interacted With " + gameObject.name);
-
-        // remove the player ui if the player is in computer ui
-        player.isPlayerInComputer(computerUI.activeSelf);
+        computerUI.SetActive(true);
+        player.isPlayerInComputer(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public IEnumerator WarningLoopImage()
@@ -81,4 +97,6 @@ public class Computer : Interactable
         }
 
     }
+
+    
 }

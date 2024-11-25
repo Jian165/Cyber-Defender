@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211901cde4ad0764da49bbe3a880971b, type: 3}
+  m_Name: EmailC
+  m_EditorClassIdentifier: 
+  senderName: Amazon Support
+  senderProfile: {fileID: 21300000, guid: 2995eedec920008428a4ac2f4450bf81, type: 3}
+  senderSubject: Your Order Has Been Canceled
+  senderMessage: 'Dear Customer,
+
+
+    Your recent order has been canceled due to
+    payment issues. To avoid future disruptions, update your payment details by visiting
+    the link below:
+
+
+    <color=blue>Update Payment Information</color>
+
+
+    Thank
+    you for shopping with us.
+
+    Amazon Team'
+  isMalicious: 1

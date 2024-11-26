@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   senderName: HR Department
   senderProfile: {fileID: 21300000, guid: 5aa9ac1ba819b2c498a529ec8a9b5cd7, type: 3}
-  senderSubject: Employee Benefits Update
+  senderSubject: 'Subject: Employee Benefits Update'
   senderMessage: "Dear Team,\n\nWe\u2019re excited to announce updates to our employee
     benefits package for the upcoming year. Please see the attached PDF for details
     on health plans, vacation policies, and more.\n\nLet us know if you have any

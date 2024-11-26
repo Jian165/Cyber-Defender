@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EmailE
   m_EditorClassIdentifier: 
   senderName: Your Admin
-  senderProfile: {fileID: 21300000, guid: 2995eedec920008428a4ac2f4450bf81, type: 3}
-  senderSubject: Account Deactivation Notice
+  senderProfile: {fileID: 21300000, guid: a4dfa52d86097104bb42a959ac449b5c, type: 3}
+  senderSubject: Subject Account Deactivation Notice
   senderMessage: 'Hi,
 
 

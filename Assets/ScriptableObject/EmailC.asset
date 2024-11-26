@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EmailC
   m_EditorClassIdentifier: 
   senderName: Amazon Support
-  senderProfile: {fileID: 21300000, guid: 2995eedec920008428a4ac2f4450bf81, type: 3}
-  senderSubject: Your Order Has Been Canceled
+  senderProfile: {fileID: 21300000, guid: cdb4fac9730a55b45881a0de5ffbc5d0, type: 3}
+  senderSubject: 'Subject: Your Order Has Been Canceled'
   senderMessage: 'Dear Customer,
 
 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EmailD
   m_EditorClassIdentifier: 
   senderName: ' IT Support'
-  senderProfile: {fileID: 21300000, guid: 2995eedec920008428a4ac2f4450bf81, type: 3}
-  senderSubject: 'Scheduled Maintenance: November 30'
+  senderProfile: {fileID: 21300000, guid: c82e31566ed32c246af4ba79c94a1630, type: 3}
+  senderSubject: ' Subject: Scheduled Maintenance: November 30'
   senderMessage: 'Hello,
 
 

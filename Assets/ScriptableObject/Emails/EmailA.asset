@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211901cde4ad0764da49bbe3a880971b, type: 3}
+  m_Name: EmailA
+  m_EditorClassIdentifier: 
+  senderName: Support@BankingSecure.com
+  senderProfile: {fileID: 21300000, guid: 667a2031a549b5e4d9ad0ea3ebf0da16, type: 3}
+  senderSubject: 'Subject: Unusual Login Detected'
+  senderMessage: 'Dear Valued Customer,
+
+
+    We have detected an unusual login attempt
+    on your account. For your safety, please verify your account immediately by clicking
+    the link below:
+
+
+    <color=blue>Verify Account Now</color>
+
+
+    Failure to
+    act within 24 hours may result in your account being suspended.
+
+    Sincerely, 
+    Online Security TeamDear Valued Customer,
+
+'
+  isMalicious: 1

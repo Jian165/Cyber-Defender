@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Minigame : MonoBehaviour
 {
-    private string[] NoteMessage()
+    public virtual string[] NoteMessage()
     {
         return null;
     }

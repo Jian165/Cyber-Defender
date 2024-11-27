@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211901cde4ad0764da49bbe3a880971b, type: 3}
+  m_Name: EmailI
+  m_EditorClassIdentifier: 
+  senderName: Office Administrator
+  senderProfile: {fileID: 21300000, guid: 5aa9ac1ba819b2c498a529ec8a9b5cd7, type: 3}
+  senderSubject: 'Subject: Reminder: Submit Your Monthly Reports'
+  senderMessage: 'Dear Team,
+
+    
+
+    This is a friendly reminder to submit your
+    monthly reports by the end of this week. Please ensure all data is accurate and
+    submit it through the shared folder.
+
+    
+
+    Let me know if you have any
+    questions!
+
+    
+
+    Best regards,
+
+    Office Administrator'
+  isMalicious: 0

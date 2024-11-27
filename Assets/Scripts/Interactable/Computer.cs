@@ -15,6 +15,11 @@ public class Computer : Interactable
     [SerializeField] private TextMeshProUGUI computerTimer;
     [SerializeField] private TimeController timeController;
 
+    [SerializeField] private List<GameObject> miniGameList;
+
+
+    private bool isComputerUnderAttack;
+    private GameObject SelectedMinigame;
 
 
     private bool NightTimeCurrentState;
@@ -82,6 +87,15 @@ public class Computer : Interactable
         warningUI.SetActive(true);
         warningCoroutine = StartCoroutine(WarningLoopImage());
         screenLight.color = Color.red;
+
+        if (SelectedMinigame == null)
+        {
+            //Select Minigame
+            GameObject randomMinigame = miniGameList[UnityEngine.Random.Range(0,miniGameList.Count)];
+            SelectedMinigame = randomMinigame;
+            //activate Minigame
+            randomMinigame.SetActive(true);
+        }
     }
 
     public void DisableAttack()
@@ -94,6 +108,8 @@ public class Computer : Interactable
         }
 
     }
+
+    
 
     
 }

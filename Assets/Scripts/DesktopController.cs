@@ -12,17 +12,32 @@ public class DesktopController : MonoBehaviour
     [SerializeField]
     TimeController timeController;
 
-    List<Computer> computersWithError;
+    private List<Computer> computersWithError;
+    private List<Computer> computerSuccessd;
 
     public EventHandler OnDayChange;
     private bool NightTimeCurrentState;
+
+    public static DesktopController instance { get; private set; }
     
 
 
     private void Start()
     {
-        timeController.OnNightTime += OnNightTime_EnableAttack;
+        computersWithError = new List<Computer>();
+        computerSuccessd = new List<Computer>();
 
+        timeController.OnNightTime += OnNightTime_EnableAttack;
+        instance = this;
+
+    }
+
+    private void Update()
+    {
+        if (computersWithError.Count == 0 && computerSuccessd.Count == 5)
+        {
+            Debug.Log("game successes");
+        }
     }
 
     private void OnNightTime_EnableAttack(object sender, TimeController.OnNightTimeEventArgs e)
@@ -85,6 +100,16 @@ public class DesktopController : MonoBehaviour
 
         }
 
+    }
+
+    public void AddFinishedComputer(Computer computer)
+    {
+        if (computersWithError.Contains(computer))
+        {
+            computer.DisableAttack();
+            computersWithError.Remove(computer);
+            computerSuccessd.Add(computer);
+        }
     }
 
 

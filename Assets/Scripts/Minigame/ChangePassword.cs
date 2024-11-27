@@ -13,16 +13,35 @@ public class ChangePassword : Minigame
     [SerializeField] private TMP_InputField confirmPassword;
 
     [SerializeField] private Button changesPasswordButton;
+    [SerializeField] private Toggle toggelMFA;
 
     [SerializeField] private TextMeshProUGUI promptText;
 
-    public const string OLD_PASSWORD = "Admin"; 
+    [SerializeField] private Computer parentComputer;
+
+    [SerializeField] private TipsSO tips;
+
+    [SerializeField] private Tips tipsUI;
+
+    private const string OLD_PASSWORD = "Admin";
+    TimeSpan timeSpan;
+    private const double  oneMonthInSeconds = 2592000f;
+    private bool isMFAEnable;
+
+  
     private void Start() {
         changesPasswordButton.onClick.AddListener(OnChange_Password);
         newPassword.contentType = TMP_InputField.ContentType.Password;
         newPassword.onValueChanged.AddListener(OnUserNewPassword);
+        toggelMFA.onValueChanged.AddListener(OnMultifactorEnable);
         confirmPassword.contentType = TMP_InputField.ContentType.Password;
-        
+        tipsUI.gameObject.SetActive(true);
+        tipsUI.GetTips(tips);
+    }
+
+    private void OnMultifactorEnable(bool arg0)
+    {
+        isMFAEnable = arg0;
     }
 
     private void OnChange_Password()
@@ -30,26 +49,44 @@ public class ChangePassword : Minigame
         if (!OLD_PASSWORD.Equals(oldPassword.text))
         {
             promptText.text = "Your current password is not exsisting";
+            Debug.Log("Penalty!");
         }
 
         else if (OLD_PASSWORD.Equals(newPassword.text))
         {
             promptText.text = "Your using your old password";
+            Debug.Log("Penalty!");
         }
 
         else if (!newPassword.text.Equals(confirmPassword.text))
         {
             promptText.text = "Your confirm password dosen't match";
+            Debug.Log("Penalty!");
         }
-
+        else if (isMFAEnable == false)
+        {
+            promptText.text = "Your did not Multi-Factor Authentication";
+            Debug.Log("Penalty!");
+        }
+        else if (timeSpan.Days < 30)
+        { 
+        
+            promptText.text = "Your Password Is too week";
+            Debug.Log("Penalty!");
+        
+        }
         else
         {
             promptText.color = Color.green;
             promptText.text = "Change Success";
+            gameObject.SetActive(false);
+            tipsUI.gameObject.SetActive(false);
+
+            DesktopController.instance.AddFinishedComputer(parentComputer);
         }
     }
 
-
+ 
     private void OnUserNewPassword(string arg0)
     {
         promptText.text = EvaluatePasswordStringth(newPassword.text);
@@ -67,13 +104,12 @@ public class ChangePassword : Minigame
 
         try
         {
-            TimeSpan timeSpan = TimeSpan.FromSeconds(timeToCrackInSecods);
+            timeSpan = TimeSpan.FromSeconds(timeToCrackInSecods);
             string timeToCrack = FormatTimeSpan(timeSpan);
             return $"Your password has {combination:N0} combinations.\nEstinatied time to crack: {timeToCrack} ";
         }
-        catch (OverflowException ex)
+        catch (OverflowException)
         { 
-            
             return $"Your password is impossible to crack";
         }
 

@@ -8,16 +8,16 @@ public class Tips : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tipsPrompt;
 
     private float timeCycle;
-    private float maxTimeCycle = 2;
+    private float maxTimeCycle = 5;
     private TipsSO tips;
 
     private int listPointer = 0;
 
-  
     // Update is called once per frame
     void Update()
     {
         timeCycle -= Time.deltaTime;
+
 
         if (timeCycle <= 0f)
         {

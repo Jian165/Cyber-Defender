@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fad95b59b1812745880b9433a54fc51, type: 3}
+  m_Name: EmailTips
+  m_EditorClassIdentifier: 
+  TipsContent:
+  - Don't Open links or attachments in unexpected emails from unknown people!
+  - "Be cautious of phishing emails! Some emails may pretend to be from your coworker,
+    family, or friends to trick you into clicking links or sharing sensitive information.
+    \r\n"
+  - Always verify the sender's email address, look for unusual language, and never
+    open attachments or links in suspicious emails.

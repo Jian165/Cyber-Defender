@@ -13,8 +13,17 @@ public class EmailManager : Minigame
     private List<EmailSO> emailInbox;
     private float spawnEmailTimer;
     private float spawnEmailTiemerMax = 2f;
+
     [SerializeField] private int emailInboxMax;
     [SerializeField] private Computer parentComputer;
+
+    [SerializeField] private Notes notesUI;
+    [SerializeField] private Tips tipsUI;
+
+    [SerializeField] private TipsSO tips;
+    [SerializeField] private NotesSO notes;
+
+
 
     public static EmailManager Instance { get; private set;}
 
@@ -26,10 +35,18 @@ public class EmailManager : Minigame
         Instance = this;
     }
 
+    private void Start()
+    {
+        notesUI.gameObject.SetActive(true);
+        notesUI.GetComponent<Notes>().GetNote(notes);
+        tipsUI.gameObject.SetActive(true);
+        tipsUI.GetTips(tips);
+    }
+
     private void Update()
     {
         spawnEmailTimer -= Time.deltaTime;
-        if (spawnEmailTimer <= 0f )
+        if (spawnEmailTimer <= 0f)
         {
             spawnEmailTimer = spawnEmailTiemerMax;
 
@@ -56,6 +73,8 @@ public class EmailManager : Minigame
         {
             DesktopController.instance.AddFinishedComputer(parentComputer);
             gameObject.SetActive(false);
+            notesUI.gameObject.SetActive(false);
+            tipsUI.gameObject.SetActive(false);
         }
     }
 

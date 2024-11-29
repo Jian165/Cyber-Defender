@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopupAdsManager : Minigame
+public class PopupAdsManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> popUpList;
     [SerializeField] private Computer parentComputer;
+
+    [SerializeField] private Tips tipsUI;
+    [SerializeField] private Notes notesUI;
+
+    [SerializeField] private TipsSO tips;
+    [SerializeField] private NotesSO notes;
     
     private float popUpMaxTime = 1.5f;
     private float popUpMinTime;
@@ -20,6 +26,10 @@ public class PopupAdsManager : Minigame
     {
         instance = this; 
         closedPopupList = new List<GameObject>();
+        tipsUI.gameObject.SetActive(true);
+        tipsUI.GetTips(tips);
+        notesUI.gameObject.SetActive(true);
+        notesUI.GetNote(notes);
     }
 
     private void Update()
@@ -39,6 +49,8 @@ public class PopupAdsManager : Minigame
         {
             DesktopController.instance.AddFinishedComputer(parentComputer);
             gameObject.SetActive(false);
+            tipsUI.gameObject.SetActive(false);
+            notesUI.gameObject.SetActive(false);
         }
     }
 

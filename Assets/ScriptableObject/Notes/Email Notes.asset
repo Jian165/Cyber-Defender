@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f099870c397154aa4b92861d0e71a6, type: 3}
+  m_Name: Email Notes
+  m_EditorClassIdentifier: 
+  NotesContent: "\u2022Data is a valuable asset. Cyber Criminals will steal it, encrypt
+    it and hold it ransom. \n\u2022A common way they do this is by sending malicious
+    attachments in phishing emails. \n\u2022Emails containing software can cripple
+    businesses\n"

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f099870c397154aa4b92861d0e71a6, type: 3}
+  m_Name: AntivirusNotes
+  m_EditorClassIdentifier: 
+  NotesContent: Antivirus or anti-malware software for computers prevents, detects,
+    and removes any malicious software.Antivirus scans new programs or files as soon
+    as they are installed or entered into the system.

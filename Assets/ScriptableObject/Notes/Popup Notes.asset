@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f099870c397154aa4b92861d0e71a6, type: 3}
   m_Name: Popup Notes
   m_EditorClassIdentifier: 
-  NotesContent: "\u2022Pop-up ads or warnings are unsolicited messages that appear
-    on your screen.\r\n\u2022Phishing pop-up ads use excitement to trick people into
-    clicking on a pop-up ad.\r\nI\u2022t can lead to the download of malware or a
-    call to a fake support center.\r\n"
+  NotesContent: 'Pop-up ads or warnings are unsolicited messages that appear on your
+    screen.Phishing pop-up ads use excitement to trick people into clicking on a
+    pop-up ad.It can lead to the download of malware or a call to a fake support
+    center.
+
+'

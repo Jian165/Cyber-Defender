@@ -23,8 +23,7 @@ public class EmailManager : Minigame
     [SerializeField] private TipsSO tips;
     [SerializeField] private NotesSO notes;
 
-
-
+ 
     public static EmailManager Instance { get; private set;}
 
     private int totalEmailCounter;
@@ -69,7 +68,7 @@ public class EmailManager : Minigame
         emailInbox.Remove(email);                     
         OnEmailSpawn?.Invoke(this, EventArgs.Empty);
 
-        if (emailInbox.Count <= 0)
+        if (emailInbox.Count <= 0 && totalEmailCounter >=emailInboxMax)
         {
             DesktopController.instance.AddFinishedComputer(parentComputer);
             gameObject.SetActive(false);

@@ -68,11 +68,15 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnGamePause(object sender, EventArgs e)
     {
-        gamePause.gameObject.SetActive(true);
-        gamePause.Pause();
+        if (canMove)
+        {
+            gamePause.gameObject.SetActive(true);
+            gamePause.Pause();
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+        }
     }
 
     private void WorldTimer_OnTimeChnage(object sender, TimeController.OnTimeChangeEventArgs e)

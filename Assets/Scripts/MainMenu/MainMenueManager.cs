@@ -9,7 +9,7 @@ public class MainMenueManager : MonoBehaviour
 {
     [SerializeField] private Button playButton;
     [SerializeField] private Button controles;
-    [SerializeField] private Button Quit;
+    [SerializeField] private Button quit;
     [SerializeField] private SceneLoader loading;
 
     [SerializeField] GameObject controlesUI;
@@ -18,7 +18,7 @@ public class MainMenueManager : MonoBehaviour
     {
         playButton.onClick.AddListener(PlayeNight1);
         controles.onClick.AddListener(OpenControlsUI);
-        controles.onClick.AddListener(quitGame);
+        quit.onClick.AddListener(quitGame);
     }
 
     private void quitGame()

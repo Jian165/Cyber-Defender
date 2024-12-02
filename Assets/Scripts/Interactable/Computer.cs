@@ -30,9 +30,12 @@ public class Computer : Interactable
 
 
     private bool NightTimeCurrentState;
+    
+    public static Computer instance {  get; private set; } 
 
     public void Start()
     {
+        instance = this;
         timeController.OnNightTime += OnNightTime_ComputerLigthsOn;
         if (Night == 1)
         {
@@ -46,6 +49,7 @@ public class Computer : Interactable
         {
             miniGameList = miniGameListNight3;
         }
+
 
     }
 
@@ -129,7 +133,4 @@ public class Computer : Interactable
 
     }
 
-    
-
-    
-}
+  }

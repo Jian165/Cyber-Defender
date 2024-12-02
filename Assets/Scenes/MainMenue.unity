@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playButton: {fileID: 1393078434}
   controles: {fileID: 1338239186}
-  Quit: {fileID: 1011640409}
+  quit: {fileID: 1011640409}
   loading: {fileID: 324818181}
   controlesUI: {fileID: 792678648}
 --- !u!1 &108686621

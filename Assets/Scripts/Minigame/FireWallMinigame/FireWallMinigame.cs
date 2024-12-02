@@ -53,12 +53,8 @@ public class FireWallMinigame : MonoBehaviour
     {
         if (e.isWarningIgnored)
         {
-            WarningUI.gameObject.SetActive(false);
-            Debug.Log("Penalty!");
             TimeController.instance.SkipTimePenalty();
-        }
-        else 
-        {
+            WarningUI.gameObject.SetActive(false);
             WarningUI.gameObject.SetActive(false);
         }
     }

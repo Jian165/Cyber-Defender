@@ -14,7 +14,6 @@ public class VirusPopupSingle : MonoBehaviour
 
     private void OnOpenAds()
     {
-        Debug.Log("Penalty!");
         TimeController.instance.SkipTimePenalty();
     }
 

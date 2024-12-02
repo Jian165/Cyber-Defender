@@ -47,16 +47,32 @@ public class Player : MonoBehaviour
 
     [SerializeField] private TimeController worldTimer;
 
+     [SerializeField] private GamePause gamePause;
+
     private Interactable selectedObject;
+
+    public static Player instance { get; private set;}
 
     void Start()
     {
+        instance = this;
         // lock the cursor
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         worldTimer.OnTimeChange += WorldTimer_OnTimeChnage;
         gameInput.OnPayerJump += GameInput_OnPlayerJump;
         gameInput.OnInteractComputer += GameInput_OnPlayeInteractComputer;
         gameInput.OnExitInteract += GameInput_OnExitInteract;
+        gameInput.OnGamePause += GameInput_OnGamePause;
+    }
+
+    private void GameInput_OnGamePause(object sender, EventArgs e)
+    {
+        gamePause.gameObject.SetActive(true);
+        gamePause.Pause();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void WorldTimer_OnTimeChnage(object sender, TimeController.OnTimeChangeEventArgs e)
@@ -106,6 +122,9 @@ public class Player : MonoBehaviour
         { 
             selectedObject.AlternativeInteract(this);
         }
+
+     /* 
+     */
     }
 
     // Update is called once per frame
@@ -226,6 +245,16 @@ public class Player : MonoBehaviour
         playerUI.SetActive(!isInComputer);
 
     }
+
+    public void isPayerWinOrLose()
+    { 
+        canMove = false;
+        playerUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    
 
     public bool IsWalking()
     {

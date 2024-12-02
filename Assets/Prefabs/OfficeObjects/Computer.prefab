@@ -3049,7 +3049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5097,7 +5097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7179,8 +7179,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.83, y: 2.64, z: 2.3}
-  m_Center: {x: -0.21, y: 1.16, z: 0.27}
+  m_Size: {x: 3.49, y: 2.64, z: 0.14}
+  m_Center: {x: 0.3, y: 1.16, z: 0.27}
 --- !u!114 &8253442613661459331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7200,7 +7200,16 @@ MonoBehaviour:
   screenLight: {fileID: 4651840190309817211}
   computerTimer: {fileID: 4569363030241594532}
   timeController: {fileID: 4552258643685574606, guid: 9a29fe81aeeec0b438340fbbd9ab8d76, type: 3}
-  miniGameList:
+  Night: 0
+  miniGameListNight1:
+  - {fileID: 9211044379823069234}
+  - {fileID: 3828924101527208980}
+  - {fileID: 2316403215247056639}
+  miniGameListNight2:
+  - {fileID: 475795279095301994}
+  - {fileID: 2571740415896458819}
+  - {fileID: 6554048251896283915}
+  miniGameListNight3:
   - {fileID: 9211044379823069234}
   - {fileID: 3828924101527208980}
   - {fileID: 2316403215247056639}
@@ -27561,7 +27570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -30436,7 +30445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -36281,7 +36290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -44866,6 +44875,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c5acb466478e33b44b194176154521a8, type: 2}
   - {fileID: 11400000, guid: d32f3fbf5ad7dee41b6de24c3048bfd4, type: 2}
   parentComputer: {fileID: 8253442613661459331}
+  notes: {fileID: 1368657839700242460}
+  tips: {fileID: 8151091959774701687}
+  notesSO: {fileID: 11400000, guid: 324521163f8d7174c8e07bb550600021, type: 2}
+  TipsSO: {fileID: 11400000, guid: 070ce21d52bad324490b9851faf7f08e, type: 2}
 --- !u!1 &6586628980692669345
 GameObject:
   m_ObjectHideFlags: 0
@@ -47081,9 +47094,9 @@ RectTransform:
   - {fileID: 4493269771176560910}
   - {fileID: 5005393510959011581}
   - {fileID: 8881275387565678410}
+  - {fileID: 1983165330979622548}
   - {fileID: 4254170496982341001}
   - {fileID: 9108209283124884305}
-  - {fileID: 1983165330979622548}
   - {fileID: 7827714243970640616}
   - {fileID: 2827767981508128921}
   - {fileID: 1817406116212764045}

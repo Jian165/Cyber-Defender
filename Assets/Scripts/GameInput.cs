@@ -7,9 +7,12 @@ using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
+    public static GameInput instance { private set; get; }
+
     public event EventHandler OnPayerJump;
     public event EventHandler OnInteractComputer;
     public event EventHandler OnExitInteract;
+    public event EventHandler OnGamePause;
 
     PlayerInput playerInput;
     void Awake()
@@ -20,7 +23,24 @@ public class GameInput : MonoBehaviour
         playerInput.OnFoot.Jump.performed += OnPlayerJump_Perfrom;
         playerInput.OnFoot.Interact.performed += OnInteractComputer_Perform;
         playerInput.OnFoot.InteractAlternative.performed += OnExitInteract_Perform;
+
+        playerInput.OnFoot.GamePause.performed += OnGamePause_Perfrom;
         
+    }
+
+    private void OnGamePause_Perfrom(InputAction.CallbackContext context)
+    {
+        OnGamePause?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Start()
+    {
+        instance = this;
+    }
+
+    public void ForceExitInteract()
+    {
+        OnExitInteract?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnExitInteract_Perform(InputAction.CallbackContext context)

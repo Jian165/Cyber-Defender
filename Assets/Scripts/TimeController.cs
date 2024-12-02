@@ -46,6 +46,7 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float maxMoonLightIntensity;
 
+
     public EventHandler <OnTimeChangeEventArgs> OnTimeChange;
     public class OnTimeChangeEventArgs : EventArgs
     {
@@ -59,7 +60,7 @@ public class TimeController : MonoBehaviour
         public bool isNightTime;
     }
 
-
+    public static TimeController instance { get; private set; }
 
     private DateTime currentTime;
     private TimeSpan noon = new TimeSpan(12, 0, 0);
@@ -69,6 +70,7 @@ public class TimeController : MonoBehaviour
 
     void Start()
     {
+        instance = this;
         // set the current time 
         currentTime = DateTime.Now.Date + TimeSpan.FromHours(startHour); 
 
@@ -173,6 +175,7 @@ public class TimeController : MonoBehaviour
         sunLight.transform.rotation = Quaternion.AngleAxis(sunLightRotation, Vector3.right);
     }
 
+  
     private void UpdateLightSettings()
     {
         float dotProduct = Vector3.Dot(sunLight.transform.forward, Vector3.down);
@@ -193,5 +196,10 @@ public class TimeController : MonoBehaviour
         return difference;
     }
 
-
-   }
+    public void SkipTimePenalty()
+    {
+        Debug.Log(currentTime.ToString());
+        currentTime = currentTime.AddMinutes(2.4);
+        Debug.Log(currentTime.ToString());
+    }
+}

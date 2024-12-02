@@ -18,6 +18,7 @@ public class PopUpSingle : MonoBehaviour
     private void OnOpenAds()
     {
         Debug.Log("Penalty!");
+        TimeController.instance.SkipTimePenalty();
     }
 
     private void OnCloseAds()

@@ -15,7 +15,14 @@ public class Computer : Interactable
     [SerializeField] private TextMeshProUGUI computerTimer;
     [SerializeField] private TimeController timeController;
 
-    [SerializeField] private List<GameObject> miniGameList;
+    [SerializeField] private int Night;
+
+    [SerializeField] private List<GameObject> miniGameListNight1;
+    [SerializeField] private List<GameObject> miniGameListNight2;
+    [SerializeField] private List<GameObject> miniGameListNight3;
+
+
+    private List<GameObject> miniGameList;
 
 
     private bool isComputerUnderAttack;
@@ -27,6 +34,19 @@ public class Computer : Interactable
     public void Start()
     {
         timeController.OnNightTime += OnNightTime_ComputerLigthsOn;
+        if (Night == 1)
+        {
+            miniGameList = miniGameListNight1;
+        }
+        else if (Night == 2)
+        {
+            miniGameList = miniGameListNight2;
+        }
+        else
+        {
+            miniGameList = miniGameListNight3;
+        }
+
     }
 
     private void OnNightTime_ComputerLigthsOn(object sender, TimeController.OnNightTimeEventArgs e)

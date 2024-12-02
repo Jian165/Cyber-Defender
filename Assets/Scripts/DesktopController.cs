@@ -6,22 +6,26 @@ using UnityEngine;
 
 public class DesktopController : MonoBehaviour
 {
-    [SerializeField]
-    List<Computer> computers;
+    [SerializeField] List<Computer> computers;
 
-    [SerializeField]
-    TimeController timeController;
+    [SerializeField] TimeController timeController;
+
+    [SerializeField] GameObject Win;
+    [SerializeField] GameObject Loose;
+    [SerializeField] int computerErrorCount = 5;
+
+    private GameObject WinOrLoosObject;
 
     private List<Computer> computersWithError;
     private List<Computer> computerSuccessd;
 
     public EventHandler OnDayChange;
     private bool NightTimeCurrentState;
+    private bool JustStarted = true;
+    
 
     public static DesktopController instance { get; private set; }
     
-
-
     private void Start()
     {
         computersWithError = new List<Computer>();
@@ -34,10 +38,37 @@ public class DesktopController : MonoBehaviour
 
     private void Update()
     {
-        if (computersWithError.Count == 0 && computerSuccessd.Count == 5)
+        if (computerSuccessd.Count >= computerErrorCount )
         {
             Debug.Log("game successes");
+            if (WinOrLoosObject == null)
+            {
+                GameInput.instance.ForceExitInteract();
+                Player.instance.isPayerWinOrLose();
+                Win.SetActive(true);
+                WinOrLoosObject = Win;
+            }
         }
+
+        if (computerSuccessd.Count != computerErrorCount && NightTimeCurrentState == false)
+        {
+            if (!JustStarted)
+            {
+                Debug.Log("Game Over!");
+
+                if (WinOrLoosObject == null)
+                {
+                    GameInput.instance.ForceExitInteract();
+                    Player.instance.isPayerWinOrLose();
+                    Loose.SetActive(true);
+                    WinOrLoosObject = Loose;
+                }
+
+            }
+
+            JustStarted = false;
+        }
+
     }
 
     private void OnNightTime_EnableAttack(object sender, TimeController.OnNightTimeEventArgs e)
@@ -67,7 +98,7 @@ public class DesktopController : MonoBehaviour
     private void ComputerPicker()
     {
         computersWithError = new List<Computer>();
-        while (computersWithError.Count != 5)
+        while (computersWithError.Count != computerErrorCount)
         {
             int selectedIndex = UnityEngine.Random.Range(0,computers.Count);
             if (!computersWithError.Contains(computers[selectedIndex]))
@@ -111,6 +142,4 @@ public class DesktopController : MonoBehaviour
             computerSuccessd.Add(computer);
         }
     }
-
-
 }

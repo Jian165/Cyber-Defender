@@ -50,30 +50,33 @@ public class ChangePassword : Minigame
         {
             promptText.text = "Your current password is not exsisting";
             Debug.Log("Penalty!");
+            TimeController.instance.SkipTimePenalty();
         }
 
         else if (OLD_PASSWORD.Equals(newPassword.text))
         {
             promptText.text = "Your using your old password";
             Debug.Log("Penalty!");
+            TimeController.instance.SkipTimePenalty();
         }
 
         else if (!newPassword.text.Equals(confirmPassword.text))
         {
             promptText.text = "Your confirm password dosen't match";
             Debug.Log("Penalty!");
+            TimeController.instance.SkipTimePenalty();
         }
         else if (isMFAEnable == false)
         {
             promptText.text = "Your did not Multi-Factor Authentication";
             Debug.Log("Penalty!");
+            TimeController.instance.SkipTimePenalty();
         }
         else if (timeSpan.Days < 30)
         { 
-        
             promptText.text = "Your Password Is too week";
             Debug.Log("Penalty!");
-        
+            TimeController.instance.SkipTimePenalty();
         }
         else
         {
@@ -153,8 +156,6 @@ public class ChangePassword : Minigame
             int years = (int)(timeSpan.TotalDays / 365);
             int remainingDays = (int)(timeSpan.TotalDays % 365);
             return $"{years} years : {remainingDays} days";
-
-       
     }
 
     private int GetCharacterSetSize(string password)

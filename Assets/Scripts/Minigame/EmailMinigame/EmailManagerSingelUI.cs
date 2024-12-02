@@ -43,6 +43,7 @@ public class EmailManagerSingel : MonoBehaviour
         if (!email.isMalicious)
         {
             Debug.Log("Penalty!");
+            TimeController.instance.SkipTimePenalty();
         }
 
         if (EmailContent.GetCurrentReadEmailSO() == email)
@@ -58,6 +59,7 @@ public class EmailManagerSingel : MonoBehaviour
         if (email.isMalicious)
         {
             Debug.Log("Penalty!");
+            TimeController.instance.SkipTimePenalty();
         }
         if (EmailContent.GetCurrentReadEmailSO() == email)
         {

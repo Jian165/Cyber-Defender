@@ -20,6 +20,8 @@ public class EmailManagerSingel : MonoBehaviour
     [Header("EmailContent")]
     [SerializeField] private EmailContent emailContent;
 
+    [SerializeField] private Computer parentComputer;
+
 
     private EmailSO email;
     private Button button;
@@ -43,6 +45,7 @@ public class EmailManagerSingel : MonoBehaviour
         if (!email.isMalicious)
         {
             TimeController.instance.SkipTimePenalty();
+            parentComputer.PlayerPenalized();
         }
 
         if (EmailContent.GetCurrentReadEmailSO() == email)
@@ -58,6 +61,7 @@ public class EmailManagerSingel : MonoBehaviour
         if (email.isMalicious)
         {
             TimeController.instance.SkipTimePenalty();
+            parentComputer.PlayerPenalized();
         }
         if (EmailContent.GetCurrentReadEmailSO() == email)
         {

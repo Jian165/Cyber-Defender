@@ -49,28 +49,33 @@ public class ChangePassword : Minigame
         if (!OLD_PASSWORD.Equals(oldPassword.text))
         {
             promptText.text = "Your current password is not exsisting";
+            parentComputer.PlayerPenalized();
             TimeController.instance.SkipTimePenalty();
         }
 
         else if (OLD_PASSWORD.Equals(newPassword.text))
         {
             promptText.text = "Your using your old password";
+            parentComputer.PlayerPenalized();
             TimeController.instance.SkipTimePenalty();
         }
 
         else if (!newPassword.text.Equals(confirmPassword.text))
         {
             promptText.text = "Your confirm password dosen't match";
+            parentComputer.PlayerPenalized();
             TimeController.instance.SkipTimePenalty();
         }
         else if (isMFAEnable == false)
         {
             promptText.text = "Your did not Multi-Factor Authentication";
+            parentComputer.PlayerPenalized();
             TimeController.instance.SkipTimePenalty();
         }
         else if (timeSpan.Days < 30)
         { 
             promptText.text = "Your Password Is too week";
+            parentComputer.PlayerPenalized();
             TimeController.instance.SkipTimePenalty();
         }
         else

@@ -1530,6 +1530,7 @@ MonoBehaviour:
   loadingBar: {fileID: 7949874099223699560}
   toProcess: {fileID: 4470095302123050980}
   ApptoUnInstall: {fileID: 2843524702297821567}
+  parentComputer: {fileID: 0}
 --- !u!1 &269374591071270576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,6 +1728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 7378426428403974025}
   advertButton: {fileID: 7607448621392546645}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &344788504308772235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,6 +2993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 5621889894539072495}
   advertButton: {fileID: 653982759230505104}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &531268987045792221
 GameObject:
   m_ObjectHideFlags: 0
@@ -5517,6 +5520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 524681701339205225}
   advertButton: {fileID: 3799710755974030772}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &829714636115782901
 GameObject:
   m_ObjectHideFlags: 0
@@ -6549,6 +6553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 1967295198730687755}
   advertButton: {fileID: 8081357369620810057}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &1005487290624342829
 GameObject:
   m_ObjectHideFlags: 0
@@ -6727,6 +6732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 6431167152935411202}
   advertButton: {fileID: 8142431919501560476}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &1035620981693327559
 GameObject:
   m_ObjectHideFlags: 0
@@ -7135,6 +7141,7 @@ GameObject:
   - component: {fileID: 2859386187872673368}
   - component: {fileID: 6618129669060502748}
   - component: {fileID: 8253442613661459331}
+  - component: {fileID: 3387670480256463547}
   m_Layer: 6
   m_Name: Computer
   m_TagString: Untagged
@@ -7158,6 +7165,7 @@ Transform:
   - {fileID: 1874877591466954500}
   - {fileID: 4913726168843843503}
   - {fileID: 4290857330603839394}
+  - {fileID: 7374863798139619545}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6618129669060502748
@@ -7216,7 +7224,106 @@ MonoBehaviour:
   - {fileID: 475795279095301994}
   - {fileID: 2571740415896458819}
   - {fileID: 6554048251896283915}
-  background: {fileID: 457737340662235626}
+  mainPanelImage: {fileID: 4062585030854345589}
+  NotePad: {fileID: 1229515619962161851}
+  errorSound: {fileID: 8300000, guid: 493e5957b9ff03246a268e555c27ad3e, type: 3}
+  clickSound: {fileID: 8300000, guid: 460f1588b38233d44ac567b1bc4b4880, type: 3}
+--- !u!82 &3387670480256463547
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083374083452317542}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1094707265852928738
 GameObject:
   m_ObjectHideFlags: 0
@@ -8296,6 +8403,38 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1229515619962161851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7374863798139619545}
+  m_Layer: 0
+  m_Name: NoteVisual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7374863798139619545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229515619962161851}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.830017, y: 1.6099854, z: -0.101181105}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7052271105973972700}
+  m_Father: {fileID: 2859386187872673368}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1252550788685402911
 GameObject:
   m_ObjectHideFlags: 0
@@ -9374,6 +9513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 3228761889076208446}
   advertButton: {fileID: 335876947651483681}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &1413389833817164468
 GameObject:
   m_ObjectHideFlags: 0
@@ -12307,6 +12447,7 @@ MonoBehaviour:
   loadingBar: {fileID: 7048452385004811304}
   toProcess: {fileID: 791435969304123403}
   ApptoUnInstall: {fileID: 8697712270983405846}
+  parentComputer: {fileID: 0}
 --- !u!1 &1892023059132626462
 GameObject:
   m_ObjectHideFlags: 0
@@ -13218,6 +13359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 5750293170288235141}
   advertButton: {fileID: 4539491302688049056}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &2009672400803254401
 GameObject:
   m_ObjectHideFlags: 0
@@ -15214,6 +15356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 1155186495907977883}
   advertButton: {fileID: 879230310558961620}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &2254416811196823900
 GameObject:
   m_ObjectHideFlags: 0
@@ -19397,6 +19540,7 @@ MonoBehaviour:
   loadingBar: {fileID: 6694772921703861284}
   toProcess: {fileID: 38049382726457070}
   ApptoUnInstall: {fileID: 3974705676798263147}
+  parentComputer: {fileID: 0}
 --- !u!1 &2761985857534921401
 GameObject:
   m_ObjectHideFlags: 0
@@ -19777,6 +19921,7 @@ MonoBehaviour:
   loadingBar: {fileID: 956973491317173383}
   toProcess: {fileID: 8210858336897615807}
   ApptoUnInstall: {fileID: 5565938887032482370}
+  parentComputer: {fileID: 0}
 --- !u!1 &2790760169613562906
 GameObject:
   m_ObjectHideFlags: 0
@@ -20359,6 +20504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 8966244313640028815}
   advertButton: {fileID: 7931237641595367218}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &2860239370233260653
 GameObject:
   m_ObjectHideFlags: 0
@@ -25350,6 +25496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 2112885998816218471}
   advertButton: {fileID: 8889919154231639532}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &3476897076958058422
 GameObject:
   m_ObjectHideFlags: 0
@@ -29977,6 +30124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 7919597303252457877}
   advertButton: {fileID: 5347948273991123619}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &4277435255905650764
 GameObject:
   m_ObjectHideFlags: 0
@@ -31499,6 +31647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 4766995833330920072}
   advertButton: {fileID: 170229085264949985}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &4513439545789858300
 GameObject:
   m_ObjectHideFlags: 0
@@ -38294,6 +38443,7 @@ MonoBehaviour:
   removeMessageButton: {fileID: 3608962199952296466}
   EmailManager: {fileID: 4318758342292790621}
   emailContent: {fileID: 6341472993227443504}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &5652776476206736507
 GameObject:
   m_ObjectHideFlags: 0
@@ -38835,6 +38985,7 @@ MonoBehaviour:
   loadingBar: {fileID: 7398042838986994957}
   toProcess: {fileID: 8583372756451838497}
   ApptoUnInstall: {fileID: 1564515169739700758}
+  parentComputer: {fileID: 0}
 --- !u!1 &5676016982088052732
 GameObject:
   m_ObjectHideFlags: 0
@@ -39059,6 +39210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 921671219437807522}
   advertButton: {fileID: 8472946300170540291}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &5709717915141250951
 GameObject:
   m_ObjectHideFlags: 0
@@ -39192,6 +39344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 304978229243671293}
   advertButton: {fileID: 4265170190289985994}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &5718393715362890534
 GameObject:
   m_ObjectHideFlags: 0
@@ -41116,6 +41269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 3110631387909883991}
   advertButton: {fileID: 2209665454049578079}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &6124705151653098685
 GameObject:
   m_ObjectHideFlags: 0
@@ -49186,6 +49340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 4307037961357438913}
   advertButton: {fileID: 4924111133636440040}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &7269393801661216079
 GameObject:
   m_ObjectHideFlags: 0
@@ -52623,6 +52778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 9059348074516805279}
   advertButton: {fileID: 3039499599467480557}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &7689764834849393104
 GameObject:
   m_ObjectHideFlags: 0
@@ -59589,6 +59745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 3334270258576035924}
   advertButton: {fileID: 4498477223400439983}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &8455927537605116826
 GameObject:
   m_ObjectHideFlags: 0
@@ -61260,6 +61417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 1852123945605876960}
   advertButton: {fileID: 5277916262845256020}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &8671914968157202131
 GameObject:
   m_ObjectHideFlags: 0
@@ -63995,6 +64153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 3646917470409922672}
   advertButton: {fileID: 8278243966099393612}
+  parentComputer: {fileID: 8253442613661459331}
 --- !u!1 &9022735367528821295
 GameObject:
   m_ObjectHideFlags: 0
@@ -65194,3 +65353,91 @@ MonoBehaviour:
   parentComputer: {fileID: 8253442613661459331}
   tips: {fileID: 11400000, guid: a2326dfce2b256f4db1522077f9133ba, type: 2}
   tipsUI: {fileID: 8151091959774701687}
+--- !u!1001 &7373529801478965559
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7374863798139619545}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.049999997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.476
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5124071
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.4872771
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5124071
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.4872771
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 87.12
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3393059317818742671, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 139f24690c51a7f47a1948f649de5867, type: 2}
+    - target: {fileID: 919132149155446097, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_Name
+      value: Admin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170364737530096044, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 139f24690c51a7f47a1948f649de5867, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+    - {fileID: -8700617353114198275, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+--- !u!4 &7052271105973972700 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 05956070b2b0df944964ab195ac57a58, type: 3}
+  m_PrefabInstance: {fileID: 7373529801478965559}
+  m_PrefabAsset: {fileID: 0}

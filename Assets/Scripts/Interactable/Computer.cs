@@ -20,6 +20,13 @@ public class Computer : Interactable
     [SerializeField] private List<GameObject> miniGameListNight1;
     [SerializeField] private List<GameObject> miniGameListNight2;
     [SerializeField] private List<GameObject> miniGameListNight3;
+    [SerializeField] private Image mainPanelImage;
+    [SerializeField] private GameObject NotePad;
+
+
+    [SerializeField] private AudioClip errorSound;
+    [SerializeField] private AudioClip clickSound;
+    private AudioSource pcSound; 
 
 
     private List<GameObject> miniGameList;
@@ -31,11 +38,9 @@ public class Computer : Interactable
 
     private bool NightTimeCurrentState;
     
-    public static Computer instance {  get; private set; } 
 
     public void Start()
     {
-        instance = this;
         timeController.OnNightTime += OnNightTime_ComputerLigthsOn;
         if (Night == 1)
         {
@@ -50,7 +55,7 @@ public class Computer : Interactable
             miniGameList = miniGameListNight3;
         }
 
-
+        pcSound = GetComponent<AudioSource>();
     }
 
     private void OnNightTime_ComputerLigthsOn(object sender, TimeController.OnNightTimeEventArgs e)
@@ -83,6 +88,9 @@ public class Computer : Interactable
     {
         computerUI.SetActive(false);
         player.isPlayerInComputer(false);
+        pcSound.clip = clickSound;
+        pcSound.volume = 0.6f;
+        pcSound.Play();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -91,9 +99,30 @@ public class Computer : Interactable
     {
         computerUI.SetActive(true);
         player.isPlayerInComputer(true);
+        pcSound.clip = clickSound;
+        pcSound.volume = 0.6f;
+        pcSound.Play();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
+    private Coroutine penaltyCorotine;
+    public IEnumerator PlayerPenalty()
+    {
+        mainPanelImage.color = Color.red;
+        yield return new WaitForSeconds(0.25f);
+        mainPanelImage.color = Color.white;
+        
+    }
+
+    public void PlayerPenalized()
+    {
+        penaltyCorotine = StartCoroutine(PlayerPenalty());         
+        pcSound.clip = errorSound;
+        pcSound.Play();
+    }
+
+
 
     public IEnumerator WarningLoopImage()
     {
@@ -104,6 +133,7 @@ public class Computer : Interactable
         }
     }
 
+  
     private Coroutine warningCoroutine;
 
     public void EnableAttack()
@@ -119,8 +149,15 @@ public class Computer : Interactable
             SelectedMinigame = randomMinigame;
             //activate Minigame
             randomMinigame.SetActive(true);
+
+            if (randomMinigame.name == "ChangePasswordMinigame")
+            {
+                NotePad.SetActive(true);
+            }
         }
     }
+
+   
 
     public void DisableAttack()
     {
@@ -129,6 +166,7 @@ public class Computer : Interactable
             warningUI.SetActive(false);
             StopCoroutine(warningCoroutine);
             screenLight.color = new Color(0.741f, 0.961f, 0.933f);
+            NotePad.SetActive(false);
         }
 
     }

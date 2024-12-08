@@ -5,6 +5,7 @@ public class VirusPopupSingle : MonoBehaviour
 {
     [SerializeField] Button closeButton;
     [SerializeField] Button advertButton;
+    [SerializeField] Computer parentComputer;
 
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class VirusPopupSingle : MonoBehaviour
     private void OnOpenAds()
     {
         TimeController.instance.SkipTimePenalty();
+        parentComputer.PlayerPenalized();
     }
 
     private void OnCloseAds()

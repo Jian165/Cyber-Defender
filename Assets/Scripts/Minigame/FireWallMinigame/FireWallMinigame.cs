@@ -31,6 +31,7 @@ public class FireWallMinigame : MonoBehaviour
     [SerializeField] private Tips tipsUI;
     [SerializeField] private Notes NotesUI;
 
+
     private bool privateFirewallState = false;
     private bool publicFirewallState = false;
 
@@ -54,6 +55,7 @@ public class FireWallMinigame : MonoBehaviour
         if (e.isWarningIgnored)
         {
             TimeController.instance.SkipTimePenalty();
+            parentComputer.PlayerPenalized();
             WarningUI.gameObject.SetActive(false);
             WarningUI.gameObject.SetActive(false);
         }

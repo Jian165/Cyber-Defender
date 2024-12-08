@@ -8,6 +8,7 @@ public class PopUpSingle : MonoBehaviour
 {
     [SerializeField] Button closeButton;
     [SerializeField] Button advertButton;
+    [SerializeField] private Computer parentComputer;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class PopUpSingle : MonoBehaviour
 
     private void OnOpenAds()
     {
+        parentComputer.PlayerPenalized();
         TimeController.instance.SkipTimePenalty();
     }
 

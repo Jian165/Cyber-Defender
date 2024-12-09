@@ -13,8 +13,8 @@ EditorBuildSettings:
     guid: bdfc51f6730a96d4691a279c737d4a68
   - enabled: 1
     path: Assets/Scenes/GameSceneNight2.unity
-    guid: 3502a047355931f40896fbdd178f2cb7
+    guid: 104941d4296afaa48a2655911c63c1be
   - enabled: 1
     path: Assets/Scenes/GameSceneNight3.unity
-    guid: 9b46fddf8ca359b45aeeff68ae5ca78d
+    guid: 724fe2608e85d6b43bdedcec1a3346f2
   m_configObjects: {}

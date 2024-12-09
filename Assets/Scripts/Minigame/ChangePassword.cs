@@ -55,7 +55,7 @@ public class ChangePassword : Minigame
 
         else if (OLD_PASSWORD.Equals(newPassword.text))
         {
-            promptText.text = "Your using your old password";
+            promptText.text = "You're using your old password";
             parentComputer.PlayerPenalized();
             TimeController.instance.SkipTimePenalty();
         }
@@ -68,7 +68,7 @@ public class ChangePassword : Minigame
         }
         else if (isMFAEnable == false)
         {
-            promptText.text = "Your did not Multi-Factor Authentication";
+            promptText.text = "Your did not turn on Multi-Factor Authentication";
             parentComputer.PlayerPenalized();
             TimeController.instance.SkipTimePenalty();
         }
